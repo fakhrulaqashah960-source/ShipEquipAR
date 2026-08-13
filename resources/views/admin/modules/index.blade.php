@@ -5,82 +5,82 @@
 
 <title>Module Management</title>
 
-
 <style>
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Segoe UI',sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
 }
 
 
 body{
 
-    background:#eef6fb;
-    padding:40px;
-    color:#0f172a;
+background:#eef6fb;
+padding:40px;
+color:#0f172a;
 
 }
-
 
 
 /* HEADER */
 
 .header{
 
-    background:white;
-    padding:35px;
-    border-radius:25px;
-    box-shadow:0 10px 25px rgba(0,0,0,.12);
-    margin-bottom:25px;
+background:white;
+padding:35px;
+border-radius:25px;
+box-shadow:0 10px 25px rgba(0,0,0,.12);
+margin-bottom:25px;
 
 }
 
 
 .header h1{
 
-    font-size:38px;
-    font-weight:800;
+font-size:38px;
+font-weight:800;
 
 }
 
 
 .header p{
 
-    margin-top:10px;
-    color:#64748b;
-    font-size:16px;
+margin-top:10px;
+color:#64748b;
 
 }
 
 
+/* BUTTON */
 
+.button-group{
 
-/* ADD BUTTON */
+display:flex;
+gap:20px;
+margin-bottom:30px;
+
+}
+
 
 .add-btn{
 
-    display:inline-block;
-    background:#0284c7;
-    color:white;
-    padding:13px 25px;
-    border-radius:10px;
-    text-decoration:none;
-    font-size:16px;
-    font-weight:600;
-    margin-bottom:30px;
+padding:13px 25px;
+border-radius:10px;
+background:#0284c7;
+color:white;
+text-decoration:none;
+font-weight:600;
 
 }
 
 
 .add-btn:hover{
 
-    background:#0369a1;
+background:#0369a1;
 
 }
-
 
 
 
@@ -88,38 +88,32 @@ body{
 
 .card{
 
-    background:white;
-    padding:30px;
-    margin-bottom:25px;
-    border-radius:22px;
-    box-shadow:0 8px 20px rgba(0,0,0,.12);
+background:white;
+padding:30px;
+margin-bottom:25px;
+border-radius:22px;
+box-shadow:0 8px 20px rgba(0,0,0,.12);
 
 }
 
 
-
-
-/* IMAGE */
 
 .card img{
 
-    width:220px;
-    height:170px;
-    object-fit:cover;
-    border-radius:15px;
-    margin-bottom:20px;
+width:220px;
+height:170px;
+object-fit:cover;
+border-radius:15px;
+margin-bottom:20px;
 
 }
 
 
 
-
-/* TEXT */
-
 .card h2{
 
-    font-size:30px;
-    margin-bottom:10px;
+font-size:30px;
+margin-bottom:10px;
 
 }
 
@@ -127,9 +121,9 @@ body{
 
 .category{
 
-    color:#0284c7;
-    font-weight:700;
-    margin-bottom:20px;
+color:#0284c7;
+font-weight:700;
+margin-bottom:20px;
 
 }
 
@@ -137,8 +131,8 @@ body{
 
 .card h3{
 
-    margin-top:20px;
-    margin-bottom:8px;
+margin-top:20px;
+margin-bottom:8px;
 
 }
 
@@ -146,8 +140,8 @@ body{
 
 .card p{
 
-    color:#475569;
-    line-height:1.7;
+color:#475569;
+line-height:1.7;
 
 }
 
@@ -158,7 +152,7 @@ body{
 
 .actions{
 
-    margin-top:25px;
+margin-top:25px;
 
 }
 
@@ -166,23 +160,22 @@ body{
 
 .btn{
 
-    display:inline-block;
-    padding:11px 18px;
-    border-radius:10px;
-    text-decoration:none;
-    color:white;
-    font-weight:600;
-    border:none;
-    cursor:pointer;
-    margin-right:8px;
+display:inline-block;
+padding:11px 18px;
+border-radius:10px;
+text-decoration:none;
+color:white;
+font-weight:600;
+border:none;
+cursor:pointer;
+margin-right:8px;
 
 }
 
 
-
 .edit{
 
-    background:#2563eb;
+background:#2563eb;
 
 }
 
@@ -190,7 +183,7 @@ body{
 
 .delete{
 
-    background:#dc2626;
+background:#dc2626;
 
 }
 
@@ -198,15 +191,7 @@ body{
 
 .view{
 
-    background:#0284c7;
-
-}
-
-
-
-.btn:hover{
-
-    opacity:.85;
+background:#0284c7;
 
 }
 
@@ -216,34 +201,35 @@ body{
 
 .empty{
 
-    background:white;
-    padding:40px;
-    border-radius:20px;
-    text-align:center;
-    color:#64748b;
+background:white;
+padding:40px;
+border-radius:20px;
+text-align:center;
 
 }
 
+
+
+/* BACK */
+
 .back-dashboard{
 
-    display:inline-block;
-    padding:12px 25px;
-    background:#0f172a;
-    color:white;
-    text-decoration:none;
-    border-radius:12px;
-    font-weight:600;
-    transition:.3s;
+display:inline-block;
+margin-top:40px;
+padding:12px 25px;
+background:#0f172a;
+color:white;
+border-radius:12px;
+text-decoration:none;
 
 }
 
 
 .back-dashboard:hover{
 
-    background:#0284c7;
+background:#0284c7;
 
 }
-
 
 
 </style>
@@ -261,12 +247,16 @@ body{
 
 
 <h1>
-⚓ ShipEquipAR Module Management
+
+⚓ ShipEquipAR Learning Management
+
 </h1>
 
 
 <p>
-Manage marine learning content
+
+Manage marine learning modules
+
 </p>
 
 
@@ -276,18 +266,27 @@ Manage marine learning content
 
 
 
-<a href="/admin/modules/create" class="add-btn">
+<div class="button-group">
+
+
+<a href="/admin/modules/create"
+class="add-btn">
 
 + Add Module
 
 </a>
 
 
+</div>
 
 
 
 
-@if(count($modules) == 0)
+
+
+
+
+@if(count($modules)==0)
 
 
 <div class="empty">
@@ -296,13 +295,13 @@ Manage marine learning content
 No Module Available
 </h2>
 
+
 <p>
-Please add a new learning module.
+Please add new learning module.
 </p>
 
 
 </div>
-
 
 
 @endif
@@ -321,20 +320,11 @@ Please add a new learning module.
 
 
 
-
-
-
 @if($module->image)
 
-
-<img
-src="{{ asset('images/modules/'.$module->image) }}"
->
-
+<img src="{{ asset('images/modules/'.$module->image) }}">
 
 @endif
-
-
 
 
 
@@ -344,9 +334,6 @@ src="{{ asset('images/modules/'.$module->image) }}"
 {{ $module->title }}
 
 </h2>
-
-
-
 
 
 
@@ -360,9 +347,10 @@ src="{{ asset('images/modules/'.$module->image) }}"
 
 
 
-
 <h3>
+
 Description
+
 </h3>
 
 
@@ -376,9 +364,10 @@ Description
 
 
 
-
 <h3>
+
 Function
+
 </h3>
 
 
@@ -393,16 +382,12 @@ Function
 
 
 
+
 <div class="actions">
 
 
 
-
-
-<a
-
-href="/admin/modules/{{ $module->id }}/edit"
-
+<a href="/admin/modules/{{ $module->id }}/edit"
 class="btn edit">
 
 ✏ Edit
@@ -414,12 +399,8 @@ class="btn edit">
 
 
 
-<form
-
-action="/admin/modules/{{ $module->id }}"
-
+<form action="/admin/modules/{{ $module->id }}"
 method="POST"
-
 style="display:inline">
 
 
@@ -428,17 +409,12 @@ style="display:inline">
 @method('DELETE')
 
 
-
-<button
-
-class="btn delete"
-
-onclick="return confirm('Delete this module?')">
+<button class="btn delete"
+onclick="return confirm('Delete module?')">
 
 🗑 Delete
 
 </button>
-
 
 
 </form>
@@ -449,11 +425,7 @@ onclick="return confirm('Delete this module?')">
 
 
 
-
-<a
-
-href="/admin/modules/{{ $module->id }}/equipment"
-
+<a href="/admin/modules/{{ $module->id }}/equipment"
 class="btn view">
 
 ⚓ View Equipment
@@ -463,9 +435,6 @@ class="btn view">
 
 
 
-
-
-
 </div>
 
 
@@ -473,7 +442,6 @@ class="btn view">
 
 
 </div>
-
 
 
 
@@ -481,16 +449,21 @@ class="btn view">
 
 @endforeach
 
-<div style="margin-top:40px;">
 
-    <a href="{{ route('admin.dashboard') }}"
-       class="back-dashboard">
 
-        ← Back to Dashboard
 
-    </a>
 
-</div>
+
+
+<a href="{{ route('admin.dashboard') }}"
+class="back-dashboard">
+
+← Back to Dashboard
+
+</a>
+
+
+
 
 
 </body>

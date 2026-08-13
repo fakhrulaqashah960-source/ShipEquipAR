@@ -8,7 +8,7 @@ use App\Http\Controllers\ProfileController;
 
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\EquipmentController;
-use App\Http\Controllers\ShipModelController;
+use App\Http\Controllers\ShipController;
 
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\LessonController;
@@ -18,6 +18,7 @@ use App\Http\Controllers\QuizController;
 use App\Http\Controllers\AdminQuizController;
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\AdminNoteController;
+use App\Http\Controllers\AdminDashboardController;
 
 use App\Http\Controllers\NoteController;
 
@@ -157,20 +158,6 @@ Route::middleware([
 
     /*
     |--------------------------------------------------------------------------
-    | SHIP MODEL
-    |--------------------------------------------------------------------------
-    */
-
-
-    Route::get(
-        '/ship-model',
-        [ShipModelController::class,'userIndex']
-    )
-    ->name('ship.model');
-
-
-    /*
-    |--------------------------------------------------------------------------
     | NOTES
     |--------------------------------------------------------------------------
     */
@@ -280,16 +267,11 @@ Route::middleware([
 ->prefix('admin')
 ->group(function () {
 
-    Route::get('/', function(){
-
-
-        return view(
-            'admin.dashboard'
-        );
-
-
-    })
-    ->name('admin.dashboard');
+    Route::get(
+    '/',
+    [AdminDashboardController::class,'index']
+)
+->name('admin.dashboard');
 
     Route::resource(
         'users',
@@ -323,16 +305,16 @@ Route::middleware([
     ->names('admin.equipment');
 
     Route::resource(
+    'ships',
+    ShipController::class
+)
+->names('admin.ships');
+
+    Route::resource(
         'notes',
         AdminNoteController::class
     )
     ->names('admin.notes');
-
-    Route::resource(
-        'ship-model',
-        ShipModelController::class
-    )
-    ->names('ship-model');
 
     Route::resource(
         'quiz',

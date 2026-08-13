@@ -36,4 +36,11 @@ class Module extends Model
 
 }
 
+public function ships()
+{
+
+return $this->hasMany(Ship::class);
+
+}
+
 }

@@ -1,12 +1,10 @@
 <?php
 
-
 namespace App\Http\Controllers;
 
 
 use Illuminate\Http\Request;
 use App\Models\Module;
-
 
 
 class ModuleController extends Controller
@@ -19,11 +17,10 @@ class ModuleController extends Controller
     |--------------------------------------------------------------------------
     */
 
-
     public function index()
     {
 
-        $modules = Module::with('equipments')->get();
+        $modules = Module::all();
 
 
         return view(
@@ -37,13 +34,11 @@ class ModuleController extends Controller
 
 
 
-
     /*
     |--------------------------------------------------------------------------
     | ADMIN VIEW EQUIPMENT
     |--------------------------------------------------------------------------
     */
-
 
     public function equipment($id)
     {
@@ -70,12 +65,12 @@ class ModuleController extends Controller
 
 
 
+
     /*
     |--------------------------------------------------------------------------
     | ADMIN CREATE MODULE
     |--------------------------------------------------------------------------
     */
-
 
     public function create()
     {
@@ -92,12 +87,12 @@ class ModuleController extends Controller
 
 
 
+
     /*
     |--------------------------------------------------------------------------
     | ADMIN STORE MODULE
     |--------------------------------------------------------------------------
     */
-
 
     public function store(Request $request)
     {
@@ -106,15 +101,17 @@ class ModuleController extends Controller
         $request->validate([
 
             'title'=>'required',
+
             'category'=>'required',
+
             'description'=>'required',
-            'function'=>'required',
 
-            'image'=>'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'function'=>'nullable',
 
-            'video'=>'nullable|mimes:mp4,mov,avi|max:20000'
+            'image'=>'nullable|image'
 
         ]);
+
 
 
 
@@ -125,14 +122,12 @@ class ModuleController extends Controller
         if($request->hasFile('image'))
         {
 
-            $imageName =
-            time().'_'.$request
-            ->file('image')
-            ->getClientOriginalName();
+
+            $imageName = time().'_'.$request->image->getClientOriginalName();
 
 
 
-            $request->file('image')->move(
+            $request->image->move(
 
                 public_path('images/modules'),
 
@@ -140,35 +135,9 @@ class ModuleController extends Controller
 
             );
 
-        }
-
-
-
-
-
-        $videoName = null;
-
-
-
-        if($request->hasFile('video'))
-        {
-
-            $videoName =
-            time().'_'.$request
-            ->file('video')
-            ->getClientOriginalName();
-
-
-
-            $request->file('video')->move(
-
-                public_path('uploads/videos'),
-
-                $videoName
-
-            );
 
         }
+
 
 
 
@@ -176,25 +145,40 @@ class ModuleController extends Controller
 
         Module::create([
 
+
             'title'=>$request->title,
+
 
             'category'=>$request->category,
 
+
             'description'=>$request->description,
+
 
             'function'=>$request->function,
 
-            'image'=>$imageName,
 
-            'video'=>$videoName
+            'image'=>$imageName
+
 
         ]);
 
 
 
-        return redirect('/admin/modules');
+
+
+
+
+        return redirect('/admin/modules')
+    ->with(
+        'success',
+        'Module Added Successfully'
+    );
+
 
     }
+
+
 
 
 
@@ -208,9 +192,9 @@ class ModuleController extends Controller
     |--------------------------------------------------------------------------
     */
 
-
     public function edit($id)
     {
+
 
         $module = Module::findOrFail($id);
 
@@ -224,7 +208,10 @@ class ModuleController extends Controller
 
         );
 
+
     }
+
+
 
 
 
@@ -237,7 +224,6 @@ class ModuleController extends Controller
     | ADMIN UPDATE MODULE
     |--------------------------------------------------------------------------
     */
-
 
     public function update(Request $request,$id)
     {
@@ -253,35 +239,46 @@ class ModuleController extends Controller
 
             'category'=>'required',
 
-            'description'=>'required',
-
-            'function'=>'required'
+            'description'=>'required'
 
         ]);
+
 
 
 
         $module->update([
 
+
             'title'=>$request->title,
+
 
             'category'=>$request->category,
 
+
             'description'=>$request->description,
 
+
             'function'=>$request->function
+
 
         ]);
 
 
 
+
+
         return redirect('/admin/modules')
+
             ->with(
                 'success',
                 'Module Updated Successfully'
             );
 
+
     }
+
+
+
 
 
 
@@ -295,17 +292,20 @@ class ModuleController extends Controller
     |--------------------------------------------------------------------------
     */
 
-
     public function destroy($id)
     {
 
+
         $module = Module::findOrFail($id);
+
 
 
         $module->delete();
 
 
+
         return redirect('/admin/modules');
+
 
     }
 
@@ -319,28 +319,29 @@ class ModuleController extends Controller
 
     /*
     |--------------------------------------------------------------------------
-    | USER MODULE LIST PAGE
+    | USER MODULE LIST
     |--------------------------------------------------------------------------
-    |
-    | URL:
-    | /learning-module
-    |
     */
 
-
-public function userIndex()
-{
-
-    $module = Module::with('equipments')
-        ->first();
+    public function userIndex()
+    {
 
 
-    return view(
-        'user.modules.intro',
-        compact('module')
-    );
+        $modules = Module::all();
 
-}
+
+
+        return view(
+
+            'user.modules.intro',
+
+            compact('modules')
+
+        );
+
+
+    }
+
 
 
 
@@ -351,14 +352,9 @@ public function userIndex()
 
     /*
     |--------------------------------------------------------------------------
-    | USER INTRODUCTION PAGE
+    | USER INTRO PAGE
     |--------------------------------------------------------------------------
-    |
-    | URL:
-    | /learning-module/{id}
-    |
     */
-
 
     public function intro($id)
     {
@@ -386,22 +382,19 @@ public function userIndex()
 
 
 
+
     /*
     |--------------------------------------------------------------------------
     | USER EQUIPMENT PAGE
     |--------------------------------------------------------------------------
-    |
-    | URL:
-    | /learning-module/{id}/equipment
-    |
     */
-
 
     public function userShow($id)
     {
 
 
         $module = Module::with('equipments')
+
             ->findOrFail($id);
 
 
@@ -424,12 +417,13 @@ public function userIndex()
 
 
 
+
+
     /*
     |--------------------------------------------------------------------------
     | USER VIDEO PAGE
     |--------------------------------------------------------------------------
     */
-
 
     public function video($id)
     {

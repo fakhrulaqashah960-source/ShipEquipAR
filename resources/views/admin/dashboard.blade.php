@@ -1,137 +1,201 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-
-<title>
-ShipEquipAR Admin Dashboard
-</title>
-
-
 <style>
 
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Segoe UI',sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
 }
 
 
 body{
 
-min-height:100vh;
+    min-height:100vh;
 
-background:
-linear-gradient(
-rgba(3,37,65,.85),
-rgba(2,132,199,.65)
-),
-url('https://images.unsplash.com/photo-1569263979104-865ab7cd8d13');
+    background:
+    linear-gradient(
+    rgba(3,37,65,.88),
+    rgba(2,132,199,.72)
+    ),
+    url('https://images.unsplash.com/photo-1569263979104-865ab7cd8d13');
 
-background-size:cover;
+    background-size:cover;
 
-background-position:center;
+    background-position:center;
 
 }
 
 
 
-/* =================
-SIDEBAR
-================= */
+/* ================= SIDEBAR ================= */
 
 
 .sidebar{
 
-width:250px;
+    width:320px;
 
-height:100vh;
+    height:100vh;
 
-position:fixed;
+    position:fixed;
 
-background:rgba(15,23,42,.96);
+    left:0;
+    top:0;
 
-color:white;
+    background:
+    rgba(15,23,42,.98);
 
-padding:25px;
+    color:white;
+
+    padding:35px 25px;
+
+    overflow-y:auto;
 
 }
 
+
+
+
+
+/* LOGO */
 
 
 .logo{
 
-font-size:26px;
+    display:flex;
 
-font-weight:800;
+    align-items:center;
 
-margin-bottom:35px;
+    gap:15px;
+
+    margin-bottom:55px;
+
+}
+
+
+
+.logo-icon{
+
+    font-size:45px;
 
 }
 
 
 
-.logo span{
+.logo-name{
 
-color:#38bdf8;
+    font-size:32px;
+
+    font-weight:900;
+
+    letter-spacing:-1px;
 
 }
 
 
+.logo-name span{
+
+    color:#38bdf8;
+
+}
+
+
+
+
+
+/* MENU */
 
 
 .menu a{
 
-display:block;
 
-padding:13px;
+    display:flex;
 
-margin:8px 0;
+    align-items:center;
 
-color:#cbd5e1;
+    gap:12px;
 
-text-decoration:none;
 
-border-radius:12px;
+    padding:16px 18px;
 
-transition:.3s;
+
+    margin-bottom:12px;
+
+
+    color:#cbd5e1;
+
+
+    text-decoration:none;
+
+
+    border-radius:15px;
+
+
+    font-size:18px;
+
+
+    font-weight:700;
+
+
+    transition:.3s;
+
 
 }
+
 
 
 
 .menu a:hover{
 
-background:#0284c7;
 
-color:white;
+    background:#0284c7;
+
+
+    color:white;
+
+
+    transform:translateX(8px);
+
 
 }
 
 
 
 
+/* LOGOUT */
+
 
 .logout-btn{
 
-width:100%;
 
-margin-top:25px;
+    width:100%;
 
-padding:13px;
 
-background:#dc2626;
+    margin-top:45px;
 
-color:white;
 
-border:none;
+    padding:16px;
 
-border-radius:12px;
 
-cursor:pointer;
+    background:#dc2626;
 
-font-size:15px;
+
+    color:white;
+
+
+    border:none;
+
+
+    border-radius:15px;
+
+
+    cursor:pointer;
+
+
+    font-size:18px;
+
+
+    font-weight:800;
+
 
 }
 
@@ -139,7 +203,9 @@ font-size:15px;
 
 .logout-btn:hover{
 
-background:#b91c1c;
+
+    background:#b91c1c;
+
 
 }
 
@@ -147,16 +213,17 @@ background:#b91c1c;
 
 
 
-/* =================
-CONTENT
-================= */
+/* ================= CONTENT ================= */
 
 
 .content{
 
-margin-left:250px;
 
-padding:35px;
+    margin-left:320px;
+
+
+    padding:45px;
+
 
 }
 
@@ -164,32 +231,39 @@ padding:35px;
 
 
 
-/* HERO */
+/* WELCOME */
 
 
 .welcome{
 
 
-background:
-
-linear-gradient(
-135deg,
-rgba(14,116,144,.95),
-rgba(15,23,42,.95)
-);
+    background:
 
 
-border-radius:25px;
+    linear-gradient(
+    135deg,
+    rgba(14,116,144,.95),
+    rgba(15,23,42,.95)
+    );
 
-padding:40px;
 
-color:white;
+    border-radius:30px;
 
-display:flex;
 
-justify-content:space-between;
+    padding:50px;
 
-align-items:center;
+
+    color:white;
+
+
+    display:flex;
+
+
+    justify-content:space-between;
+
+
+    align-items:center;
+
 
 }
 
@@ -197,7 +271,12 @@ align-items:center;
 
 .welcome h1{
 
-font-size:40px;
+
+    font-size:48px;
+
+
+    font-weight:900;
+
 
 }
 
@@ -205,17 +284,23 @@ font-size:40px;
 
 .welcome p{
 
-margin-top:12px;
 
-font-size:17px;
+    margin-top:15px;
+
+
+    font-size:19px;
+
 
 }
+
 
 
 
 .ship{
 
-font-size:90px;
+
+    font-size:110px;
+
 
 }
 
@@ -225,135 +310,175 @@ font-size:90px;
 
 
 
-/* =================
-STATISTICS
-================= */
+/* STATISTICS */
 
 
 .stats{
 
-margin-top:30px;
 
-display:grid;
+    margin-top:40px;
 
-grid-template-columns:repeat(4,1fr);
 
-gap:20px;
+    display:grid;
+
+
+    grid-template-columns:repeat(4,1fr);
+
+
+    gap:25px;
+
 
 }
+
+
 
 
 
 .stat-card{
 
 
-background:white;
+    background:white;
 
-padding:25px;
 
-border-radius:20px;
+    padding:32px;
 
-display:flex;
 
-align-items:center;
+    border-radius:25px;
 
-gap:20px;
 
-box-shadow:
+    display:flex;
 
-0 10px 25px rgba(0,0,0,.15);
+
+    align-items:center;
+
+
+    gap:20px;
+
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.15);
+
 
 }
+
 
 
 
 .stat-icon{
 
-font-size:40px;
+
+    font-size:50px;
+
 
 }
+
+
 
 
 
 .stat-card h2{
 
-color:#0f172a;
 
-font-size:28px;
+    color:#0f172a;
+
+
+    font-size:35px;
+
+
+    font-weight:900;
+
 
 }
+
 
 
 
 .stat-card p{
 
-color:#64748b;
+
+    color:#64748b;
+
+
+    font-size:17px;
+
 
 }
 
-/* =================
-MODULE SECTION
-================= */
+/* ================= TITLE ================= */
 
 
 .title{
 
-margin:35px 0 20px;
 
-color:white;
+    margin:45px 0 30px;
 
-font-size:30px;
 
-font-weight:700;
+    color:white;
+
+
+    font-size:36px;
+
+
+    font-weight:900;
+
 
 }
 
+
+
+
+
+
+/* ================= DASHBOARD CARD ================= */
 
 
 
 .modules{
 
 
-display:grid;
+    display:grid;
 
-grid-template-columns:repeat(3,1fr);
 
-gap:25px;
+    grid-template-columns:repeat(3,1fr);
+
+
+    gap:30px;
 
 
 }
+
+
 
 
 
 .card{
 
-background:white;
 
-padding:30px;
-
-border-radius:22px;
-
-transition:.3s;
-
-box-shadow:0 10px 25px rgba(0,0,0,.15);
-
-display:flex;
-
-flex-direction:column;
-
-min-height:330px;
-
-}
+    background:white;
 
 
+    padding:38px;
 
-.card:hover{
+
+    border-radius:30px;
 
 
-transform:translateY(-8px);
+    box-shadow:
+
+    0 10px 30px rgba(0,0,0,.18);
+
+
+    min-height:350px;
+
+
+    display:flex;
+
+
+    flex-direction:column;
 
 
 }
+
 
 
 
@@ -361,7 +486,8 @@ transform:translateY(-8px);
 .icon{
 
 
-font-size:50px;
+    font-size:60px;
+
 
 }
 
@@ -372,25 +498,17 @@ font-size:50px;
 .card h2{
 
 
-margin-top:15px;
-
-color:#0284c7;
-
-font-size:18px;
-
-}
+    margin-top:25px;
 
 
+    color:#0284c7;
 
 
-.card h3{
+    font-size:25px;
 
 
-margin-top:8px;
+    font-weight:900;
 
-color:#0f172a;
-
-font-size:20px;
 
 }
 
@@ -400,132 +518,88 @@ font-size:20px;
 
 .card p{
 
-margin-top:15px;
 
-color:#64748b;
+    margin-top:18px;
 
-line-height:1.6;
 
-flex-grow:1;
+    color:#64748b;
+
+
+    font-size:17px;
+
+
+    line-height:1.8;
+
+
+    flex-grow:1;
+
 
 }
+
+
+
 
 
 .btn{
 
-display:block;
 
-width:max-content;
+    display:block;
 
-margin-top:auto;
 
-margin-left:auto;
+    width:max-content;
 
-margin-right:auto;
 
-padding:12px 25px;
+    margin:auto;
 
-background:#0284c7;
 
-color:white;
+    padding:15px 35px;
 
-border-radius:12px;
 
-text-decoration:none;
+    background:#0284c7;
 
-font-weight:600;
 
-transition:.3s;
+    color:white;
+
+
+    border-radius:15px;
+
+
+    text-decoration:none;
+
+
+    font-weight:800;
+
+
+    font-size:17px;
+
 
 }
-
 
 
 
 .btn:hover{
 
 
-background:#0369a1;
+    background:#0369a1;
 
 
 }
 
 
-
-
-
-/* LOWER PANEL */
-
-
-.bottom{
-
-
-margin-top:30px;
-
-display:grid;
-
-grid-template-columns:repeat(3,1fr);
-
-gap:25px;
-
-
-}
-
-
-
-.panel{
-
-
-background:white;
-
-padding:25px;
-
-border-radius:20px;
-
-box-shadow:
-
-0 10px 25px rgba(0,0,0,.15);
-
-
-}
-
-
-
-
-.panel h2{
-
-
-color:#0f172a;
-
-}
-
-
-
-
-.panel p{
-
-
-margin-top:15px;
-
-color:#64748b;
-
-line-height:1.6;
-
-}
 
 
 
 </style>
 
-</head>
+
+
 
 
 <body>
 
 
 
-
-<!-- SIDEBAR -->
+<!-- ================= SIDEBAR ================= -->
 
 
 <div class="sidebar">
@@ -534,74 +608,107 @@ line-height:1.6;
 
 <div class="logo">
 
-⚓ Ship<span>EquipAR</span>
+
+<div class="logo-icon">
+
+⚓
 
 </div>
+
+
+<div class="logo-name">
+
+Ship<span>EquipAR</span>
+
+</div>
+
+
+</div>
+
+
 
 
 
 <div class="menu">
 
 
+
 <a href="/admin">
 
-🏠 Dashboard
+🏠 ADMIN DASHBOARD
 
 </a>
+
 
 
 
 <a href="/admin/users">
 
-👥 Users
-
+👥 MANAGE USERS
 </a>
+
+
 
 
 
 <a href="/admin/modules">
 
-📚 Learning Module
+📚 MANAGE MODULE
 
 </a>
+
+
+
 
 
 <a href="/admin/notes">
 
-📘 Module Notes
+📘 MANAGE NOTES
 
 </a>
+
+
+
 
 
 <a href="/admin/equipment">
 
-🦺 Equipment
+🦺 MANAGE EQUIPMENT
 
 </a>
 
 
 
-<a href="/admin/ship-model">
 
-🚢 Ship Model
+
+<a href="{{ route('admin.ships.index') }}">
+
+🚢 MANAGE SHIP
 
 </a>
+
+
 
 
 
 <a href="/admin/course">
 
-📝 Quiz Management
+📝 MANAGE QUIZ
 
 </a>
+
+
 
 
 
 <a href="#">
 
-🏆 Certificate
+🏆 MANAGE CERTIFICATE
 
 </a>
+
+
+
 
 
 
@@ -634,7 +741,7 @@ line-height:1.6;
 
 
 
-<!-- CONTENT -->
+<!-- ================= CONTENT ================= -->
 
 
 <div class="content">
@@ -644,7 +751,6 @@ line-height:1.6;
 
 
 <div class="welcome">
-
 
 
 <div>
@@ -666,10 +772,9 @@ Admin Management Panel
 
 <p>
 
-Manage maritime learning modules, equipment, AR models and digital content.
+Manage maritime learning modules, ships, equipment and digital content.
 
 </p>
-
 
 
 </div>
@@ -684,7 +789,6 @@ Manage maritime learning modules, equipment, AR models and digital content.
 </div>
 
 
-
 </div>
 
 
@@ -695,7 +799,7 @@ Manage maritime learning modules, equipment, AR models and digital content.
 
 
 
-<!-- STATISTICS -->
+<!-- STAT -->
 
 
 <div class="stats">
@@ -714,7 +818,6 @@ Manage maritime learning modules, equipment, AR models and digital content.
 
 <div>
 
-
 <h2>
 
 {{\App\Models\User::count()}}
@@ -728,11 +831,12 @@ Total Users
 
 </p>
 
-
 </div>
 
 
 </div>
+
+
 
 
 
@@ -750,7 +854,6 @@ Total Users
 
 <div>
 
-
 <h2>
 
 {{\App\Models\Module::count()}}
@@ -764,11 +867,13 @@ Learning Modules
 
 </p>
 
-
 </div>
 
 
 </div>
+
+
+
 
 
 
@@ -785,7 +890,6 @@ Learning Modules
 
 
 <div>
-
 
 <h2>
 
@@ -800,11 +904,13 @@ Equipment
 
 </p>
 
-
 </div>
 
 
 </div>
+
+
+
 
 
 
@@ -822,21 +928,19 @@ Equipment
 
 <div>
 
-
 <h2>
 
-{{\App\Models\ShipModel::count()}}
+{{\App\Models\Ship::count()}}
 
 </h2>
 
 
 <p>
 
-AR Ship Models
+Ships
 
 </p>
 
-
 </div>
 
 
@@ -845,8 +949,12 @@ AR Ship Models
 
 
 
-
 </div>
+
+
+
+
+
 
 
 
@@ -859,11 +967,72 @@ AR Ship Models
 
 
 
+
+
+
+
+
 <div class="modules">
 
 
 
+
+
+
+
+<!-- MODULE -->
+
+
 <div class="card">
+
+
+<div class="icon">
+
+📚
+
+</div>
+
+
+<h2>
+
+Learning Module Management
+
+</h2>
+
+
+
+<p>
+
+Manage maritime learning contents such as PPE Equipment, Safety System and Engine Knowledge.
+
+</p>
+
+
+
+
+<a href="/admin/modules" class="btn">
+
+Manage Module
+
+</a>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- SHIP -->
+
+
+<div class="card">
+
 
 <div class="icon">
 
@@ -871,52 +1040,42 @@ AR Ship Models
 
 </div>
 
-<h2>
-🚢 Maritime Learning Platform
-</h2>
-
-<p>
-ShipEquipAR provides an interactive Augmented Reality maritime learning environment for students and marine engineers to explore ship equipment and safety systems.
-</p>
-
-
-</div>
-
-
-<div class="card">
-
-
-<div class="icon">
-
-⚓
-
-</div>
-
 
 <h2>
 
-Content Management
+Ship Management
 
 </h2>
 
 
+
 <p>
 
-Manage learning modules, equipment information, videos and AR learning resources for maritime education.
+Manage ship categories, upload Reality Composer AR files and provide ship information for users.
 
 </p>
 
 
 
-<a href="/admin/modules" class="btn">
 
-Manage Modules
+<a href="{{ route('admin.ships.index') }}" class="btn">
+
+Manage Ship
 
 </a>
 
 
+
 </div>
 
+
+
+
+
+
+
+
+<!-- EQUIPMENT -->
 
 
 <div class="card">
@@ -931,16 +1090,18 @@ Manage Modules
 
 <h2>
 
-Safety Equipment Database
+Equipment Management
 
 </h2>
 
 
+
 <p>
 
-Maintain marine safety equipment information including PPE, protective gear and equipment specifications.
+Maintain marine equipment database including safety equipment and specifications.
 
 </p>
+
 
 
 
@@ -951,22 +1112,26 @@ Manage Equipment
 </a>
 
 
-</div>
-
-
-
-</div>
 
 </div>
 
 
+
+
+
+
+
 </div>
 
 
+
+
+
 </div>
 
 
-</div>
+
+
 
 </body>
 

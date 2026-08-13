@@ -754,15 +754,6 @@ class="equipment-card">
 </div>
 
 
-
-
-<a href="/ship-model">
-
-🚢 Ship Model
-
-</a>
-
-
 <a href="{{ route('user.notes') }}">
 
 📘 Module Notes

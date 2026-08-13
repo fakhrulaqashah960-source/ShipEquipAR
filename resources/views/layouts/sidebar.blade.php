@@ -1,75 +1,131 @@
 <div class="sidebar">
 
+
     <div class="logo">
+
         ⚓ Ship<span>EquipAR</span>
+
     </div>
+
+
+
 
     <div class="menu">
 
+
+
+        <!-- DASHBOARD -->
+
         <a href="{{ route('dashboard') }}"
            class="{{ request()->routeIs('dashboard') ? 'active':'' }}">
+
             🏠 Dashboard
+
         </a>
+
+
+
+
+
 
 
         <!-- LEARNING MODULE -->
 
+
         <div class="module-title"
              onclick="toggleModule()">
 
+
+
             <span>
+
                 📚 Learning Module
+
             </span>
+
+
 
             <span id="mainArrow">
+
                 ▼
+
             </span>
 
+
+
         </div>
+
+
+
+
+
+
 
 
         <div id="moduleContent"
              class="module-content">
 
 
-           @foreach($modules as $module)
-
-
-<div class="module-item"
-     onclick="toggleEquipment({{ $module->id }})">
-
-    <span>
-        📖 {{ $module->title }}
-    </span>
-
-    <span id="arrow{{ $module->id }}">
-        ▼
-    </span>
-
-</div>
 
 
 
-<div id="equipment{{ $module->id }}"
-     class="module-list">
+            @if(isset($modules) && count($modules) > 0)
 
 
-    @foreach($modules as $module)
 
-<a href="{{ route('learning.show',$module->id) }}"
-class="block px-4 py-3 text-sm text-gray-600">
-
-📖 {{ $module->title }}
-
-</a>
-
-@endforeach
+                @foreach($modules as $module)
 
 
-                </div>
+
+                    <a href="{{ route('learning.show',$module->id) }}"
+
+                    class="
+
+                    {{ 
+                    request()->routeIs('learning.show') 
+                    && request()->route('id') == $module->id 
+                    ? 'active'
+                    : ''
+                    }}
+
+                    ">
 
 
-            @endforeach
+
+                        📖 {{ $module->title }}
+
+
+
+                    </a>
+
+
+
+                @endforeach
+
+
+
+
+
+            @else
+
+
+
+                <p style="
+                color:#94a3b8;
+                padding:15px;
+                font-size:14px;
+                ">
+
+                    No module available
+
+                </p>
+
+
+
+            @endif
+
+
+
 
 
         </div>
@@ -78,94 +134,161 @@ class="block px-4 py-3 text-sm text-gray-600">
 
 
 
-        <a href="{{ route('ship.model') }}">
-
-    🚢 Ship Model
-
-</a>
 
 
-        <a href="#">
+
+
+        <!-- NOTES -->
+
+
+        <a href="{{ route('user.notes') }}"
+
+        class="{{ request()->routeIs('user.notes*') ? 'active':'' }}">
+
             📘 Module Notes
+
         </a>
 
 
-        <a href="{{ route('quiz.index') }}">
+
+
+
+
+
+        <!-- QUIZ -->
+
+
+        <a href="{{ route('quiz.index') }}"
+
+        class="{{ request()->routeIs('quiz.*') ? 'active':'' }}">
+
             📝 Quiz
+
         </a>
 
 
+
+
+
+
+
+        <!-- CERTIFICATE -->
+
+
         <a href="#">
+
             🏆 Certificate
+
         </a>
+
+
+
+
+
+
+
+
+        <!-- AI CHATBOT -->
 
 
         <a href="#">
-            🤖 AI Chatbot
+
+            🤖 Ship Bot
+
         </a>
 
 
-        <a href="/profile">
+
+
+
+
+
+        <!-- PROFILE -->
+
+
+        <a href="{{ route('profile.edit') }}"
+
+        class="{{ request()->routeIs('profile.*') ? 'active':'' }}">
+
             👤 Profile
+
         </a>
 
 
+
+
+
+
+
+
+        <!-- LOGOUT -->
 
 
         <form method="POST"
               action="{{ route('logout') }}">
 
+
             @csrf
 
+
+
             <button class="logout-btn">
-                Logout
+
+                🚪 Logout
+
             </button>
+
+
 
         </form>
 
 
+
+
+
     </div>
+
+
 
 </div>
 
 
 
 
+
+
+
+
+
 <script>
+
 
 function toggleModule(){
 
-    let box=document.getElementById("moduleContent");
-    let arrow=document.getElementById("mainArrow");
 
-    box.classList.toggle("active");
+    let box = document.getElementById("moduleContent");
 
 
-    arrow.innerHTML =
-    box.classList.contains("active")
-    ? "▲"
-    : "▼";
+    let arrow = document.getElementById("mainArrow");
 
-}
-
-
-
-
-function toggleEquipment(id){
-
-    let box=document.getElementById("equipment"+id);
-
-    let arrow=document.getElementById("arrow"+id);
 
 
     box.classList.toggle("active");
 
 
+
     arrow.innerHTML =
+
     box.classList.contains("active")
+
     ? "▲"
+
     : "▼";
 
+
+
 }
+
+
 
 </script>

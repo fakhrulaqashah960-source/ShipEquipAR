@@ -251,9 +251,14 @@ placeholder="Enter module description">
 
 </textarea>
 
+<label>
+Function
+</label>
 
-
-
+<textarea
+name="function"
+placeholder="Enter module function">
+</textarea>
 
 
 <label>

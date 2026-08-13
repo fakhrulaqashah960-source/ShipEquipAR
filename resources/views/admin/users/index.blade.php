@@ -506,49 +506,75 @@ background:#0369a1;
 
 <a href="/admin">
 
-🏠 Dashboard
+🏠 ADMIN DASHBOARD
 
 </a>
+
+
 
 
 <a href="/admin/users">
 
-👥 Users
-
+👥 MANAGE USERS
 </a>
+
+
+
 
 
 <a href="/admin/modules">
 
-📚 Learning Module
+📚 MANAGE MODULE
 
 </a>
+
+
+
+
+
+<a href="/admin/notes">
+
+📘 MANAGE NOTES
+
+</a>
+
+
+
 
 
 <a href="/admin/equipment">
 
-🦺 Equipment
+🦺 MANAGE EQUIPMENT
 
 </a>
 
 
-<a href="/admin/ship-model">
 
-🚢 Ship Model
+
+
+<a href="{{ route('admin.ships.index') }}">
+
+🚢 MANAGE SHIP
 
 </a>
+
+
+
 
 
 <a href="/admin/course">
 
-📝 Quiz Management
+📝 MANAGE QUIZ
 
 </a>
 
 
+
+
+
 <a href="#">
 
-🏆 Certificate
+🏆 MANAGE CERTIFICATE
 
 </a>
 
