@@ -134,7 +134,7 @@ h1{
 
 
 <h1>
-⚓ {{$module->title}} Equipment
+⚓ {{$module->title}} 
 </h1>
 
 

@@ -220,6 +220,24 @@ public function update(Request $request, $id)
 
 }
 
+public function destroy($id)
+{
+
+    $ship = \App\Models\Ship::findOrFail($id);
+
+
+    $ship->delete();
+
+
+    return redirect()
+        ->route('admin.ships.index')
+        ->with(
+            'success',
+            'Ship deleted successfully'
+        );
+
+}
+
 
 
 }

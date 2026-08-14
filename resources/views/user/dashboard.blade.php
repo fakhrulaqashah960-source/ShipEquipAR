@@ -651,7 +651,7 @@ class="module-list">
 <a href="{{route('learning.show',$module->id)}}"
 class="intro-link">
 
-📖 Introduction to {{$module->title}}
+📖 Introduction to {{ ucfirst($module->category) }}
 
 </a>
 
@@ -711,6 +711,9 @@ class="equipment-card">
 
 📡
 
+@elseif(str_contains($equipments->name,'Ear muffs'))
+
+🎧
 
 @else
 

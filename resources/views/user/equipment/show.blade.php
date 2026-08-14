@@ -420,34 +420,6 @@ class="equipment-image">
 
 
 
-
-
-
-<div class="section">
-
-
-<h2>
-
-🛡️ Safety Importance
-
-</h2>
-
-
-<p>
-
-This equipment plays an important role in protecting marine engineers from hazards such as mechanical impact, chemical exposure, heat, and unsafe working conditions onboard ships.
-
-</p>
-
-
-</div>
-
-
-
-
-
-
-
 <div class="section">
 
 

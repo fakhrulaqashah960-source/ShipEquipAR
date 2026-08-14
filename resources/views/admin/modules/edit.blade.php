@@ -8,13 +8,23 @@
 
 <style>
 
+*{
+
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+
+}
+
+
 body{
 
-    font-family:'Segoe UI';
-
-    background:#f1f5f9;
+    background:#eef6fb;
 
     padding:40px;
+
+    color:#0f172a;
 
 }
 
@@ -22,23 +32,30 @@ body{
 
 .container{
 
+
     width:700px;
 
     margin:auto;
 
     background:white;
 
-    padding:35px;
+    padding:40px;
 
-    border-radius:20px;
+    border-radius:25px;
 
-    box-shadow:0 10px 25px #ddd;
+    box-shadow:
+    0 10px 25px rgba(0,0,0,.12);
 
 }
 
 
 
+
 h1{
+
+    font-size:32px;
+
+    margin-bottom:25px;
 
     color:#0f172a;
 
@@ -48,11 +65,11 @@ h1{
 
 label{
 
-    font-weight:600;
-
     display:block;
 
-    margin-top:15px;
+    font-weight:700;
+
+    margin-top:18px;
 
 }
 
@@ -61,15 +78,16 @@ label{
 input,
 textarea{
 
+
     width:100%;
 
-    padding:12px;
+    padding:13px;
 
     margin-top:8px;
 
-    border-radius:10px;
+    border-radius:12px;
 
-    border:1px solid #ddd;
+    border:1px solid #cbd5e1;
 
     font-size:15px;
 
@@ -79,16 +97,65 @@ textarea{
 
 textarea{
 
-    height:120px;
+    height:140px;
+
+    resize:none;
 
 }
 
 
 
 
-/* ERROR MESSAGE */
+
+/* CURRENT IMAGE */
+
+.current-image{
+
+
+    margin-top:15px;
+
+}
+
+
+
+.current-image img{
+
+
+    width:220px;
+
+    height:140px;
+
+    object-fit:cover;
+
+    border-radius:15px;
+
+    border:1px solid #dbeafe;
+
+}
+
+
+
+
+
+small{
+
+    display:block;
+
+    margin-top:8px;
+
+    color:#64748b;
+
+}
+
+
+
+
+
+/* ERROR */
+
 
 .error-box{
+
 
     background:#fee2e2;
 
@@ -96,7 +163,7 @@ textarea{
 
     padding:15px;
 
-    border-radius:10px;
+    border-radius:12px;
 
     margin-bottom:20px;
 
@@ -104,26 +171,26 @@ textarea{
 
 
 
-/* BUTTON AREA */
+
+
+/* BUTTON */
+
 
 .button-group{
 
-    display:flex;
 
-    align-items:center;
+    display:flex;
 
     gap:15px;
 
-    margin-top:25px;
+    margin-top:30px;
 
 }
 
 
 
-
-/* UPDATE BUTTON */
-
 .update-btn{
+
 
     background:#0284c7;
 
@@ -131,13 +198,11 @@ textarea{
 
     border:none;
 
-    padding:12px 28px;
+    padding:13px 30px;
 
-    border-radius:8px;
+    border-radius:10px;
 
-    font-size:14px;
-
-    font-weight:bold;
+    font-weight:700;
 
     cursor:pointer;
 
@@ -147,6 +212,7 @@ textarea{
 
 .update-btn:hover{
 
+
     background:#0369a1;
 
 }
@@ -154,29 +220,21 @@ textarea{
 
 
 
-/* BACK BUTTON */
 
 .back-btn{
 
-    display:inline-flex;
-
-    align-items:center;
-
-    justify-content:center;
 
     background:#111827;
 
     color:white;
 
-    padding:12px 30px;
+    padding:13px 30px;
 
-    border-radius:8px;
-
-    font-size:14px;
-
-    font-weight:bold;
+    border-radius:10px;
 
     text-decoration:none;
+
+    font-weight:700;
 
 }
 
@@ -184,11 +242,12 @@ textarea{
 
 .back-btn:hover{
 
+
     background:#000;
 
-    color:white;
-
 }
+
+
 
 
 </style>
@@ -197,16 +256,23 @@ textarea{
 </head>
 
 
+
 <body>
+
 
 
 <div class="container">
 
 
 
+
+
 <h1>
+
 ⚓ Edit Module
+
 </h1>
+
 
 
 
@@ -214,23 +280,35 @@ textarea{
 
 @if($errors->any())
 
+
 <div class="error-box">
+
 
 <ul>
 
+
 @foreach($errors->all() as $error)
 
+
 <li>
+
 {{ $error }}
+
 </li>
+
 
 @endforeach
 
+
 </ul>
+
 
 </div>
 
+
 @endif
+
+
 
 
 
@@ -241,7 +319,10 @@ textarea{
 
 action="{{ route('modules.update',$module->id) }}"
 
-method="POST">
+method="POST"
+
+enctype="multipart/form-data">
+
 
 
 @csrf
@@ -252,8 +333,13 @@ method="POST">
 
 
 
+
+
+
 <label>
+
 Module Title
+
 </label>
 
 
@@ -267,8 +353,19 @@ value="{{ $module->title }}"
 
 required>
 
+
+
+
+
+
+
+
+
+
 <label>
+
 Category
+
 </label>
 
 
@@ -283,8 +380,83 @@ value="{{ $module->category }}"
 required>
 
 
+
+
+
+
+
+
+
+<!-- IMAGE -->
+
+
 <label>
+
+Module Image
+
+</label>
+
+
+
+@if($module->image)
+
+
+<div class="current-image">
+
+
+<p>
+
+Current Image:
+
+</p>
+
+
+
+<img
+
+src="{{ asset('uploads/modules/'.$module->image) }}"
+
+alt="Module Image">
+
+
+</div>
+
+
+@endif
+
+
+
+
+
+
+<input
+
+type="file"
+
+name="image"
+
+accept="image/*">
+
+
+
+<small>
+
+Leave empty if you don't want to change the current image.
+
+</small>
+
+
+
+
+
+
+
+
+
+<label>
+
 Description
+
 </label>
 
 
@@ -296,8 +468,16 @@ required>{{ $module->description }}</textarea>
 
 
 
+
+
+
+
+
+
 <label>
+
 Function
+
 </label>
 
 
@@ -313,7 +493,10 @@ required>{{ $module->function }}</textarea>
 
 
 
+
+
 <div class="button-group">
+
 
 
 <button
@@ -322,7 +505,9 @@ type="submit"
 
 class="update-btn">
 
+
 💾 Update Module
+
 
 </button>
 
@@ -330,11 +515,16 @@ class="update-btn">
 
 
 
-<a href="{{ route('modules.index') }}"
+
+<a
+
+href="{{ route('modules.index') }}"
 
 class="back-btn">
 
+
 ← Back
+
 
 </a>
 
@@ -346,13 +536,21 @@ class="back-btn">
 
 
 
+
+
+
 </form>
+
+
+
 
 
 
 </div>
 
 
+
 </body>
+
 
 </html>

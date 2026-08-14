@@ -179,13 +179,6 @@ class ModuleController extends Controller
     }
 
 
-
-
-
-
-
-
-
     /*
     |--------------------------------------------------------------------------
     | ADMIN EDIT MODULE
@@ -225,65 +218,105 @@ class ModuleController extends Controller
     |--------------------------------------------------------------------------
     */
 
-    public function update(Request $request,$id)
+    public function update(Request $request, Module $module)
+{
+
+$request->validate([
+
+'title'=>'required',
+
+'category'=>'required',
+
+'description'=>'required',
+
+'function'=>'required',
+
+'image'=>'nullable|image|mimes:jpg,jpeg,png|max:2048'
+
+]);
+
+
+
+
+$data = [
+
+'title'=>$request->title,
+
+'category'=>$request->category,
+
+'description'=>$request->description,
+
+'function'=>$request->function,
+
+];
+
+
+
+
+
+/*
+|--------------------------------------------------------------------------
+| UPDATE IMAGE
+|--------------------------------------------------------------------------
+*/
+
+
+if($request->hasFile('image')){
+
+
+    // delete old image
+
+    if($module->image && 
+    file_exists(public_path('uploads/modules/'.$module->image)))
     {
 
-
-        $module = Module::findOrFail($id);
-
-
-
-        $request->validate([
-
-            'title'=>'required',
-
-            'category'=>'required',
-
-            'description'=>'required'
-
-        ]);
-
-
-
-
-        $module->update([
-
-
-            'title'=>$request->title,
-
-
-            'category'=>$request->category,
-
-
-            'description'=>$request->description,
-
-
-            'function'=>$request->function
-
-
-        ]);
-
-
-
-
-
-        return redirect('/admin/modules')
-
-            ->with(
-                'success',
-                'Module Updated Successfully'
-            );
-
+        unlink(
+        public_path('uploads/modules/'.$module->image)
+        );
 
     }
 
 
 
+    $image = $request->file('image');
+
+
+    $imageName = time()
+    .'_'.$image->getClientOriginalName();
+
+
+
+    $image->move(
+
+        public_path('uploads/modules'),
+
+        $imageName
+
+    );
+
+
+
+    $data['image']=$imageName;
+
+
+}
 
 
 
 
 
+$module->update($data);
+
+
+
+return redirect()
+
+->route('modules.index')
+
+->with('success','Module updated successfully');
+
+
+}
 
 
     /*
@@ -308,46 +341,6 @@ class ModuleController extends Controller
 
 
     }
-
-
-
-
-
-
-
-
-
-    /*
-    |--------------------------------------------------------------------------
-    | USER MODULE LIST
-    |--------------------------------------------------------------------------
-    */
-
-    public function userIndex()
-    {
-
-
-        $modules = Module::all();
-
-
-
-        return view(
-
-            'user.modules.intro',
-
-            compact('modules')
-
-        );
-
-
-    }
-
-
-
-
-
-
-
 
 
     /*

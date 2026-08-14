@@ -231,6 +231,71 @@ background:#0284c7;
 
 }
 
+.view-btn{
+
+display:inline-flex;
+
+align-items:center;
+
+justify-content:center;
+
+gap:8px;
+
+padding:12px 22px;
+
+border-radius:10px;
+
+text-decoration:none;
+
+font-weight:700;
+
+font-size:14px;
+
+color:white;
+
+transition:.3s;
+
+margin-left:10px;
+
+}
+
+
+
+.ship-btn{
+
+background:#0284c7;
+
+}
+
+
+
+.ship-btn:hover{
+
+background:#0369a1;
+
+transform:translateY(-2px);
+
+}
+
+
+
+
+.equipment-btn{
+
+background:#059669;
+
+}
+
+
+
+.equipment-btn:hover{
+
+background:#047857;
+
+transform:translateY(-2px);
+
+}
+
 
 </style>
 
@@ -322,7 +387,17 @@ Please add new learning module.
 
 @if($module->image)
 
-<img src="{{ asset('images/modules/'.$module->image) }}">
+<img 
+
+src="{{ asset('uploads/modules/'.$module->image) }}"
+
+style="
+width:220px;
+height:140px;
+object-fit:cover;
+border-radius:15px;
+">
+
 
 @endif
 
@@ -421,18 +496,39 @@ onclick="return confirm('Delete module?')">
 
 
 
+@if($module->category == 'Cargo & Freight Ships')
+
+<a href="{{ route('admin.module.equipment',$module->id) }}"
+class="view-btn ship-btn">
+
+🚢 View Ship
+
+</a>
 
 
+@elseif($module->category == 'PPE')
 
 
-<a href="/admin/modules/{{ $module->id }}/equipment"
-class="btn view">
+<a href="{{ route('admin.module.equipment',$module->id) }}"
+class="view-btn equipment-btn">
 
 ⚓ View Equipment
 
 </a>
 
 
+@else
+
+
+<a href="{{ route('admin.module.equipment',$module->id) }}"
+class="view-btn">
+
+📚 View Content
+
+</a>
+
+
+@endif
 
 
 </div>

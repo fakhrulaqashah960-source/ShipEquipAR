@@ -1,6 +1,8 @@
 <div class="sidebar">
 
 
+    <!-- LOGO -->
+
     <div class="logo">
 
         ⚓ Ship<span>EquipAR</span>
@@ -17,7 +19,7 @@
         <!-- DASHBOARD -->
 
         <a href="{{ route('dashboard') }}"
-           class="{{ request()->routeIs('dashboard') ? 'active':'' }}">
+        class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">
 
             🏠 Dashboard
 
@@ -28,12 +30,13 @@
 
 
 
-
-        <!-- LEARNING MODULE -->
+        <!-- ==========================
+             LEARNING MODULE DROPDOWN
+        =========================== -->
 
 
         <div class="module-title"
-             onclick="toggleModule()">
+        onclick="toggleModule()">
 
 
 
@@ -47,7 +50,7 @@
 
             <span id="mainArrow">
 
-                ▼
+                ▲
 
             </span>
 
@@ -59,17 +62,14 @@
 
 
 
-
-
-
         <div id="moduleContent"
-             class="module-content">
+        class="module-content active">
 
 
 
 
 
-            @if(isset($modules) && count($modules) > 0)
+            @if(isset($modules) && $modules->count() > 0)
 
 
 
@@ -79,20 +79,67 @@
 
                     <a href="{{ route('learning.show',$module->id) }}"
 
+
                     class="
 
-                    {{ 
-                    request()->routeIs('learning.show') 
-                    && request()->route('id') == $module->id 
-                    ? 'active'
-                    : ''
-                    }}
+                    @if(request()->route('id') == $module->id)
+
+                    active
+
+                    @endif
 
                     ">
 
 
 
-                        📖 {{ $module->title }}
+
+
+                        @php
+
+                        $category = strtolower($module->category);
+
+                        @endphp
+
+
+
+
+
+                        @if(str_contains($category,'ppe')
+                        || str_contains($category,'safety'))
+
+                            🦺 {{ $module->title }}
+
+
+
+                        @elseif(str_contains($category,'cargo')
+                        || str_contains($category,'ship')
+                        || str_contains($category,'freight'))
+
+
+                            🚢 {{ $module->title }}
+
+
+
+
+                        @elseif(str_contains($category,'engine'))
+
+
+                            ⚙️ {{ $module->title }}
+
+
+
+
+                        @else
+
+
+                            📖 {{ $module->title }}
+
+
+
+
+                        @endif
+
+
 
 
 
@@ -101,7 +148,6 @@
 
 
                 @endforeach
-
 
 
 
@@ -127,9 +173,7 @@
 
 
 
-
         </div>
-
 
 
 
@@ -145,9 +189,12 @@
 
         class="{{ request()->routeIs('user.notes*') ? 'active':'' }}">
 
+
             📘 Module Notes
 
+
         </a>
+
 
 
 
@@ -162,9 +209,12 @@
 
         class="{{ request()->routeIs('quiz.*') ? 'active':'' }}">
 
-            📝 Quiz
+
+            📝 Start Quiz
+
 
         </a>
+
 
 
 
@@ -177,7 +227,9 @@
 
         <a href="#">
 
-            🏆 Certificate
+
+            🏆 Get Certificate
+
 
         </a>
 
@@ -188,14 +240,17 @@
 
 
 
-        <!-- AI CHATBOT -->
+        <!-- AI CHAT -->
 
 
         <a href="#">
 
+
             🤖 Ship Bot
 
+
         </a>
+
 
 
 
@@ -210,7 +265,9 @@
 
         class="{{ request()->routeIs('profile.*') ? 'active':'' }}">
 
+
             👤 Profile
+
 
         </a>
 
@@ -225,7 +282,7 @@
 
 
         <form method="POST"
-              action="{{ route('logout') }}">
+        action="{{ route('logout') }}">
 
 
             @csrf
@@ -234,7 +291,9 @@
 
             <button class="logout-btn">
 
+
                 🚪 Logout
+
 
             </button>
 
@@ -277,13 +336,21 @@ function toggleModule(){
 
 
 
-    arrow.innerHTML =
+    if(box.classList.contains("active")){
 
-    box.classList.contains("active")
 
-    ? "▲"
+        arrow.innerHTML="▲";
 
-    : "▼";
+
+    }
+
+    else{
+
+
+        arrow.innerHTML="▼";
+
+
+    }
 
 
 

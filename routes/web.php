@@ -107,7 +107,7 @@ Route::middleware([
 
     /*
     |--------------------------------------------------------------------------
-    | DASHBOARD
+    | USER DASHBOARD
     |--------------------------------------------------------------------------
     */
 
@@ -128,23 +128,34 @@ Route::middleware([
     ->name('dashboard');
 
 
+/*
+|--------------------------------------------------------------------------
+| LEARNING MODULE
+|--------------------------------------------------------------------------
+*/
+
+
+
+Route::get(
+    '/learning-module/{id}',
+    [ModuleController::class,'userShow']
+)
+->name('learning.show');
 
 
 
 
 
-    /*
-    |--------------------------------------------------------------------------
-    | MODULE
-    |--------------------------------------------------------------------------
-    */
 
+    // EQUIPMENT / AR PAGE
 
     Route::get(
         '/learning-module/{id}/equipment',
         [ModuleController::class,'userShow']
     )
-    ->name('learning.show');
+    ->name('learning.equipment');
+
+
 
 
 
@@ -154,7 +165,7 @@ Route::middleware([
 
     /*
     |--------------------------------------------------------------------------
-    | EQUIPMENT
+    | EQUIPMENT DETAIL
     |--------------------------------------------------------------------------
     */
 
@@ -164,6 +175,7 @@ Route::middleware([
         [EquipmentController::class,'userShow']
     )
     ->name('equipment.show');
+
 
 
 
@@ -186,11 +198,13 @@ Route::middleware([
     ->name('user.notes');
 
 
+
     Route::get(
         '/module-notes/{id}',
         [NoteController::class,'show']
     )
     ->name('user.notes.show');
+
 
 
 
@@ -219,6 +233,7 @@ Route::middleware([
 
 
 
+
     /*
     |--------------------------------------------------------------------------
     | LESSON
@@ -231,6 +246,7 @@ Route::middleware([
         [LessonController::class,'userShow']
     )
     ->name('lesson.show');
+
 
 
 
@@ -319,6 +335,7 @@ Route::middleware([
 
 
 
+
     /*
     |--------------------------------------------------------------------------
     | USERS
@@ -347,17 +364,18 @@ Route::middleware([
 
 
 
+
     /*
     |--------------------------------------------------------------------------
-    | MODULE
+    | MODULE MANAGEMENT
     |--------------------------------------------------------------------------
     */
 
 
     Route::resource(
-        'modules',
-        ModuleController::class
-    );
+    'modules',
+    ModuleController::class
+);
 
 
 
@@ -374,9 +392,10 @@ Route::middleware([
 
 
 
+
     /*
     |--------------------------------------------------------------------------
-    | EQUIPMENT
+    | EQUIPMENT MANAGEMENT
     |--------------------------------------------------------------------------
     */
 
@@ -394,9 +413,10 @@ Route::middleware([
 
 
 
+
     /*
     |--------------------------------------------------------------------------
-    | SHIP
+    | SHIP MANAGEMENT
     |--------------------------------------------------------------------------
     */
 
@@ -406,6 +426,7 @@ Route::middleware([
         ShipController::class
     )
     ->names('admin.ships');
+
 
 
 
@@ -434,6 +455,7 @@ Route::middleware([
 
 
 
+
     /*
     |--------------------------------------------------------------------------
     | QUIZ MANAGEMENT
@@ -454,6 +476,7 @@ Route::middleware([
 
 
 
+
     /*
     |--------------------------------------------------------------------------
     | COURSE
@@ -465,6 +488,7 @@ Route::middleware([
         'course',
         CourseController::class
     );
+
 
 
 

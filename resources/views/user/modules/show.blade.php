@@ -3,540 +3,448 @@
 
 <head>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
 
-    <title>{{ $module->title }}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', sans-serif;
-        }
+<title>{{ $module->title }}</title>
 
 
-        body {
-            background: #eef6fb;
-            padding: 40px;
-            color: #0f172a;
-        }
+<style>
 
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
 
-        .container {
-            max-width: 1200px;
-            margin: auto;
-        }
 
 
-        /* =========================
-           GENERAL CARD
-        ========================= */
+body{
 
-        .module-card {
-            background: #ffffff;
-            padding: 40px;
-            border-radius: 25px;
+    background:#eef6fb;
 
-            box-shadow:
-                0 10px 25px rgba(0, 0, 0, 0.08);
+    padding:40px;
 
-            border: 1px solid #e2e8f0;
+    color:#0f172a;
 
-            margin-bottom: 30px;
-        }
+}
 
 
-        /* =========================
-           TOP MODULE CARD
-        ========================= */
 
-        .module-header-card {
-            background:
-                linear-gradient(
-                    135deg,
-                    #ffffff 0%,
-                    #f0f9ff 100%
-                );
+.container{
 
-            padding: 42px;
-        }
+    max-width:1200px;
 
+    margin:auto;
 
-        .module-title-row {
-            display: flex;
-            align-items: flex-start;
-            gap: 20px;
-        }
+}
 
 
-        .module-icon {
-            width: 60px;
-            height: 60px;
 
-            display: flex;
-            justify-content: center;
-            align-items: center;
+/* ================= CARD ================= */
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #38bdf8,
-                    #0284c7
-                );
 
-            border-radius: 16px;
+.module-card{
 
-            font-size: 30px;
+    background:white;
 
-            flex-shrink: 0;
+    padding:40px;
 
-            box-shadow:
-                0 8px 18px rgba(2, 132, 199, 0.20);
-        }
+    border-radius:25px;
 
+    margin-bottom:30px;
 
-        .module-title-content {
-            flex: 1;
-        }
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
 
+    border:1px solid #e2e8f0;
 
-        h1 {
-            font-size: 38px;
-            margin-bottom: 15px;
-            color: #0f172a;
-            line-height: 1.2;
-        }
+}
 
 
-        h2 {
-            font-size: 27px;
-            margin-bottom: 22px;
-            color: #0f172a;
-        }
 
 
-        h3 {
-            font-size: 22px;
-            margin-bottom: 15px;
-        }
 
 
-        p {
-            color: #475569;
-            line-height: 1.8;
-            font-size: 16px;
-        }
+/* ================= HEADER ================= */
 
 
-        .module-description {
-            max-width: 950px;
-        }
+.module-header{
 
 
-        /* =========================
-           SECTION TITLE
-        ========================= */
+    display:flex;
 
-        .section-title {
-            display: flex;
-            align-items: center;
-            gap: 10px;
+    align-items:center;
 
-            margin-bottom: 22px;
-        }
+    gap:20px;
 
 
-        .section-title h2 {
-            margin: 0;
-        }
+}
 
 
-        .section-icon {
-            font-size: 25px;
-        }
 
 
-        /* =========================
-           ABOUT CARD
-        ========================= */
+.module-icon{
 
-        .about-card p {
-            margin-bottom: 18px;
-        }
 
+    width:65px;
 
-        .about-card p:last-child {
-            margin-bottom: 0;
-        }
+    height:65px;
 
 
-        /* =========================
-           VIDEO CARD
-        ========================= */
+    display:flex;
 
-        .video-section {
-            width: 100%;
-        }
+    align-items:center;
 
+    justify-content:center;
 
-        .video-wrapper {
-            width: 100%;
-            overflow: hidden;
 
-            border-radius: 18px;
+    background:linear-gradient(
+        135deg,
+        #38bdf8,
+        #0284c7
+    );
 
-            background: #000;
 
-            box-shadow:
-                0 8px 20px rgba(0, 0, 0, 0.10);
-        }
+    border-radius:18px;
 
 
-        video {
-            width: 100%;
-            display: block;
-            border-radius: 18px;
-        }
+    font-size:30px;
 
 
-        /* =========================
-           EQUIPMENT SECTION
-        ========================= */
+    line-height:1;
 
-        .equipment-section {
-            width: 100%;
-        }
 
+}
 
-        .equipment-grid {
-            display: grid;
 
-            grid-template-columns:
-                repeat(auto-fit, minmax(300px, 1fr));
 
-            gap: 30px;
 
-            margin-top: 25px;
-        }
+.module-header h1{
 
 
-        /* =========================
-           EQUIPMENT CARD
-        ========================= */
+    font-size:40px;
 
-        .equipment-card {
+    font-weight:800;
 
-            background:
-                linear-gradient(
-                    145deg,
-                    #ffffff,
-                    #f1f8fd
-                );
+    margin:0;
 
-            padding: 25px;
 
-            border-radius: 25px;
+}
 
-            border: 1px solid #dbeafe;
 
-            box-shadow:
-                0 10px 25px rgba(14, 116, 144, .12);
 
-            display: flex;
-            flex-direction: column;
 
-            transition: .3s ease;
-        }
 
 
-        .equipment-card:hover {
+/* ================= SECTION TITLE ================= */
 
-            transform: translateY(-8px);
 
-            box-shadow:
-                0 15px 35px rgba(14, 116, 144, .25);
-        }
 
+.section-title{
 
-        /* =========================
-           EQUIPMENT IMAGE
-        ========================= */
 
-        .equipment-image {
+    display:flex;
 
-            width: 100%;
-            height: 210px;
+    align-items:center;
 
-            object-fit: contain;
+    gap:15px;
 
-            background: #ffffff;
+    margin-bottom:25px;
 
-            padding: 15px;
 
-            border-radius: 20px;
+}
 
-            margin-bottom: 20px;
 
-            box-shadow:
-                inset 0 0 15px rgba(0, 0, 0, .05);
-        }
 
+.section-icon{
 
-        .equipment-card h3 {
 
-            font-size: 22px;
+    width:42px;
 
-            color: #0f172a;
+    height:42px;
 
-            margin-bottom: 18px;
-        }
 
+    display:flex;
 
-        .equipment-content {
-            flex: 1;
-        }
+    align-items:center;
 
+    justify-content:center;
 
-        .equipment-content h4 {
 
-            color: #0369a1;
+    background:#e0f2fe;
 
-            font-size: 15px;
 
-            margin-top: 17px;
-            margin-bottom: 7px;
+    border-radius:12px;
 
-            text-transform: uppercase;
 
-            letter-spacing: .4px;
-        }
+    font-size:25px;
 
 
-        .equipment-content h4:first-child {
-            margin-top: 0;
-        }
+    line-height:1;
 
 
-        .equipment-content p {
+    flex-shrink:0;
 
-            font-size: 14px;
 
-            color: #475569;
+}
 
-            line-height: 1.7;
-        }
 
 
-        /* =========================
-           AR BUTTON
-        ========================= */
 
-        .btn-ar {
 
-            display: block;
+.section-title h2{
 
-            width: max-content;
 
-            margin: 25px auto 0;
+    margin:0;
 
-            padding: 12px 30px;
+    font-size:28px;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #0284c7,
-                    #0369a1
-                );
+    font-weight:800;
 
-            color: #ffffff;
 
-            text-decoration: none;
+}
 
-            border-radius: 30px;
 
-            font-weight: 700;
 
-            text-align: center;
 
-            box-shadow:
-                0 5px 15px rgba(2, 132, 199, .3);
 
-            transition: .3s ease;
-        }
 
 
-        .btn-ar:hover {
+p{
 
-            transform: scale(1.05);
 
-            background: #075985;
-        }
+    color:#475569;
 
+    font-size:16px;
 
-        /* =========================
-           EMPTY EQUIPMENT
-        ========================= */
+    line-height:1.8;
 
-        .empty-equipment {
+    margin-bottom:15px;
 
-            grid-column: 1 / -1;
 
-            text-align: center;
+}
 
-            background: #f8fafc;
 
-            padding: 35px;
 
-            border-radius: 18px;
 
-            border: 1px dashed #cbd5e1;
-        }
 
 
-        /* =========================
-           BACK BUTTON
-        ========================= */
 
-        .back-section {
-            margin-top: 5px;
-            margin-bottom: 30px;
-        }
+/* ================= EQUIPMENT ================= */
 
 
-        .back-btn {
+.equipment-grid{
 
-            display: inline-flex;
 
-            align-items: center;
+display:grid;
 
-            gap: 8px;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #0284c7,
-                    #0369a1
-                );
+grid-template-columns:
+repeat(auto-fit,minmax(300px,1fr));
 
-            color: #ffffff;
 
-            padding: 13px 27px;
+gap:30px;
 
-            border-radius: 12px;
 
-            text-decoration: none;
+}
 
-            font-weight: 600;
 
-            box-shadow:
-                0 5px 15px rgba(2, 132, 199, .20);
 
-            transition: .3s ease;
-        }
 
 
-        .back-btn:hover {
+.equipment-card{
 
-            transform: translateX(-4px);
 
-            background: #075985;
-        }
+background:#f8fafc;
 
 
-        /* =========================
-           RESPONSIVE
-        ========================= */
+padding:25px;
 
-        @media (max-width: 768px) {
 
-            body {
-                padding: 20px;
-            }
+border-radius:25px;
 
 
-            .module-card {
-                padding: 25px;
-                border-radius: 20px;
-            }
+border:1px solid #dbeafe;
 
 
-            .module-header-card {
-                padding: 28px;
-            }
+}
 
 
-            .module-title-row {
-                flex-direction: column;
-                gap: 15px;
-            }
 
 
-            .module-icon {
-                width: 52px;
-                height: 52px;
-                font-size: 26px;
-            }
 
+.equipment-image{
 
-            h1 {
-                font-size: 29px;
-            }
 
+width:100%;
 
-            h2 {
-                font-size: 23px;
-            }
 
+height:210px;
 
-            .equipment-grid {
-                grid-template-columns: 1fr;
-            }
 
+object-fit:contain;
 
-            .equipment-image {
-                height: 190px;
-            }
-        }
 
+background:white;
 
-        @media (max-width: 480px) {
 
-            body {
-                padding: 12px;
-            }
+padding:15px;
 
 
-            .module-card {
-                padding: 20px;
-            }
+border-radius:20px;
 
 
-            .module-header-card {
-                padding: 22px;
-            }
+}
 
 
-            h1 {
-                font-size: 25px;
-            }
 
 
-            h2 {
-                font-size: 21px;
-            }
 
+.equipment-card h2{
 
-            p {
-                font-size: 15px;
-            }
-        }
 
-    </style>
+margin-top:20px;
+
+font-size:22px;
+
+
+}
+
+
+
+
+
+
+
+
+/* ================= EMPTY ================= */
+
+
+.empty-equipment{
+
+
+text-align:center;
+
+
+padding:35px;
+
+
+background:#f8fafc;
+
+
+border-radius:18px;
+
+
+border:1px dashed #cbd5e1;
+
+
+}
+
+
+
+
+
+
+
+
+
+/* ================= BUTTON ================= */
+
+
+
+.btn-ar{
+
+
+display:block;
+
+
+width:max-content;
+
+
+margin:25px auto 0;
+
+
+padding:13px 30px;
+
+
+background:#0284c7;
+
+
+color:white;
+
+
+border-radius:30px;
+
+
+text-decoration:none;
+
+
+font-weight:700;
+
+
+}
+
+
+
+
+
+.back-btn{
+
+
+display:inline-flex;
+
+
+margin-top:20px;
+
+
+padding:14px 30px;
+
+
+background:#0284c7;
+
+
+color:white;
+
+
+border-radius:12px;
+
+
+text-decoration:none;
+
+
+font-weight:700;
+
+
+transition:.3s;
+
+
+}
+
+
+
+.back-btn:hover{
+
+
+background:#0369a1;
+
+
+transform:translateX(-5px);
+
+
+}
+
+
+
+
+
+</style>
+
 
 </head>
+
 
 
 <body>
@@ -545,248 +453,415 @@
 <div class="container">
 
 
-    <!-- =========================
-         TOP MODULE CARD
-    ========================== -->
 
-    <div class="module-card module-header-card">
 
-        <div class="module-title-row">
 
-            <div class="module-icon">
-                📘
-            </div>
+<!-- HEADER -->
 
 
-            <div class="module-title-content">
+<div class="module-card">
 
-                <h1>
-                    {{ $module->title }}
-                </h1>
 
+<div class="module-header">
 
-                <p class="module-description">
-                    {{ $module->description }}
-                </p>
 
-            </div>
 
-        </div>
+<div class="module-icon">
 
-    </div>
 
+@if(
+str_contains(strtolower($module->category),'ship')
+||
+str_contains(strtolower($module->title),'ship')
+)
 
+🚢
 
-    <!-- =========================
-         ABOUT CARD
-    ========================== -->
 
-    <div class="module-card about-card">
+@elseif(
+str_contains(strtolower($module->category),'ppe')
+||
+str_contains(strtolower($module->category),'safety')
+)
 
-        <div class="section-title">
+🦺
 
-            <span class="section-icon">
-                📖
-            </span>
 
-            <h2>
-                About {{ $module->title }}
-            </h2>
+@else
 
-        </div>
+📚
 
 
-        <p>
-            {{ $module->function }}
-        </p>
+@endif
 
 
-        <p>
-            This module provides users with a comprehensive understanding
-            of maritime safety equipment, their purposes, functions and
-            applications in real working environments.
-        </p>
 
+</div>
 
-        <p>
-            Through interactive learning and Augmented Reality technology,
-            users can explore three-dimensional equipment models and
-            understand how each equipment contributes to safety operations
-            onboard ships.
-        </p>
 
-    </div>
 
 
+<h1>
 
-    <!-- =========================
-         LEARNING VIDEO CARD
-    ========================== -->
+{{ $module->title }}
 
-    @if($module->video)
+</h1>
 
-        <div class="module-card video-section">
 
-            <div class="section-title">
 
-                <span class="section-icon">
-                    🎬
-                </span>
+</div>
 
-                <h2>
-                    Learning Video
-                </h2>
 
-            </div>
+</div>
 
 
-            <div class="video-wrapper">
 
-                <video controls>
 
-                    <source
-                        src="{{ asset('uploads/videos/'.$module->video) }}"
-                        type="video/mp4">
 
-                    Your browser does not support the video tag.
 
-                </video>
 
-            </div>
 
-        </div>
+<!-- ABOUT -->
 
-    @endif
 
+<div class="module-card">
 
 
-    <!-- =========================
-         EQUIPMENT CARD
-    ========================== -->
+<div class="section-title">
 
-    <div class="module-card equipment-section">
 
+<div class="section-icon">
 
-        <div class="section-title">
+📖
 
-            <span class="section-icon">
-                ⚓
-            </span>
+</div>
 
-            <h2>
-                Equipment
-            </h2>
 
-        </div>
+<h2>
 
+About {{ $module->title }}
 
+</h2>
 
-        <div class="equipment-grid">
 
+</div>
 
-            @forelse($module->equipments as $equipment)
 
 
-                <div class="equipment-card">
 
+<p>
 
-                    @if($equipment->image)
+{{ $module->description }}
 
-                        <img
-                            src="{{ asset('uploads/equipment/'.$equipment->image) }}"
-                            alt="{{ $equipment->name }}"
-                            class="equipment-image">
+</p>
 
-                    @endif
 
+<p>
 
+{{ $module->function }}
 
-                    <h3>
-                        ⚓ {{ $equipment->name }}
-                    </h3>
+</p>
 
 
 
-                    <div class="equipment-content">
+</div>
 
 
-                        <h4>
-                            Description
-                        </h4>
 
 
-                        <p>
-                            {{ $equipment->description }}
-                        </p>
 
 
 
-                        <h4>
-                            Function
-                        </h4>
 
+<!-- VIDEO -->
 
-                        <p>
-                            {{ $equipment->function }}
-                        </p>
 
+@if($module->video_url)
 
-                    </div>
 
+<div class="module-card">
 
 
-                    @if($equipment->model_file)
+<div class="section-title">
 
-                        <a
-                            href="/ar-model/{{ $equipment->model_file }}"
-                            class="btn-ar">
 
-                            📱 Open AR Model
+<div class="section-icon">
 
-                        </a>
+🎥
 
-                    @endif
+</div>
 
 
-                </div>
+<h2>
 
+Learning Video
 
-            @empty
+</h2>
 
 
-                <div class="empty-equipment">
+</div>
 
-                    <p>
-                        No equipment available for this module.
-                    </p>
 
-                </div>
 
+<iframe
 
-            @endforelse
+width="100%"
 
+height="400"
 
-        </div>
+src="{{ $module->video_url }}"
 
-    </div>
+frameborder="0"
 
+allowfullscreen>
 
-    <!-- =========================
-         BACK BUTTON
-    ========================== -->
 
-    <div class="back-section">
+</iframe>
 
-<a href="{{ route('dashboard') }}" class="back-btn">
-    ← Back
+
+
+</div>
+
+
+@endif
+
+
+
+
+
+
+
+
+<!-- SHIP -->
+
+@if(
+str_contains(strtolower($module->title),'ship')
+||
+str_contains(strtolower($module->category),'ship')
+)
+
+
+
+<div class="module-card">
+
+
+<div class="section-title">
+
+
+<div class="section-icon">
+
+🚢
+
+</div>
+
+
+
+<h2>
+
+Ship Model
+
+</h2>
+
+
+</div>
+
+
+
+
+<p>
+
+Explore different types of maritime vessels through Augmented Reality technology.
+
+</p>
+
+
+
+
+@if(isset($module->ship))
+
+
+<a href="#"
+class="btn-ar">
+
+🚢 Open Ship AR Model
+
 </a>
 
-    </div>
+
+@else
+
+
+<div class="empty-equipment">
+
+No AR ship model available.
+
+</div>
+
+
+@endif
+
+
+
+</div>
+
+
+
+
+
+
+
+@else
+
+
+
+
+
+
+<!-- EQUIPMENT -->
+
+
+<div class="module-card">
+
+
+
+<div class="section-title">
+
+
+<div class="section-icon">
+
+⚓
+
+</div>
+
+
+<h2>
+
+Equipment List
+
+</h2>
+
+
+</div>
+
+
+
+
+
+
+@if($module->equipments->count()>0)
+
+
+
+<div class="equipment-grid">
+
+
+@foreach($module->equipments as $equipment)
+
+
+
+<div class="equipment-card">
+
+
+@if($equipment->image)
+
+
+<img
+
+src="{{ asset('uploads/equipment/'.$equipment->image) }}"
+
+class="equipment-image"
+
+
+>
+
+
+@endif
+
+
+
+<h2>
+
+{{ $equipment->name }}
+
+</h2>
+
+
+
+
+<p>
+
+{{ $equipment->description }}
+
+</p>
+
+
+
+<a href="#"
+
+class="btn-ar">
+
+
+📱 Open AR Model
+
+</a>
+
+
+
+</div>
+
+
+
+@endforeach
+
+
+</div>
+
+
+
+@else
+
+
+<div class="empty-equipment">
+
+No equipment available for this module.
+
+</div>
+
+
+@endif
+
+
+
+</div>
+
+
+
+@endif
+
+
+
+
+
+
+
+<a href="{{ route('dashboard') }}"
+
+class="back-btn">
+
+
+← Back to Dashboard
+
+
+</a>
+
+
+
 
 
 </div>
 
 
 </body>
+
 
 </html>
