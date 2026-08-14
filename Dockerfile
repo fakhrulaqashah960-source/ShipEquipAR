@@ -7,6 +7,7 @@ RUN apt-get update && apt-get install -y \
     libpq-dev \
     libzip-dev \
     libonig-dev \
+    ca-certificates \
     zip \
     curl \
     && docker-php-ext-install \
