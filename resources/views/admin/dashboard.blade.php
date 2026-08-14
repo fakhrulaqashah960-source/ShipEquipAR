@@ -635,7 +635,7 @@ Ship<span>EquipAR</span>
 
 <a href="/admin">
 
-🏠 ADMIN DASHBOARD
+🏠 Admin Dashboard
 
 </a>
 
@@ -644,7 +644,7 @@ Ship<span>EquipAR</span>
 
 <a href="/admin/users">
 
-👥 MANAGE USERS
+👥 Manage Users
 </a>
 
 
@@ -653,7 +653,7 @@ Ship<span>EquipAR</span>
 
 <a href="/admin/modules">
 
-📚 MANAGE MODULE
+📚 Manage Module
 
 </a>
 
@@ -663,7 +663,7 @@ Ship<span>EquipAR</span>
 
 <a href="/admin/notes">
 
-📘 MANAGE NOTES
+📘 Manage Notes
 
 </a>
 
@@ -673,7 +673,7 @@ Ship<span>EquipAR</span>
 
 <a href="/admin/equipment">
 
-🦺 MANAGE EQUIPMENT
+🦺 Manage Equipments
 
 </a>
 
@@ -683,7 +683,7 @@ Ship<span>EquipAR</span>
 
 <a href="{{ route('admin.ships.index') }}">
 
-🚢 MANAGE SHIP
+🚢 Manage Ships
 
 </a>
 
@@ -693,7 +693,7 @@ Ship<span>EquipAR</span>
 
 <a href="/admin/course">
 
-📝 MANAGE QUIZ
+📝 Manage Quiz
 
 </a>
 
@@ -703,7 +703,7 @@ Ship<span>EquipAR</span>
 
 <a href="#">
 
-🏆 MANAGE CERTIFICATE
+🏆 Manage Cerificate
 
 </a>
 

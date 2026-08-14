@@ -493,9 +493,23 @@ background:#0369a1;
 <div class="sidebar">
 
 
+
 <div class="logo">
 
-⚓ Ship<span>EquipAR</span>
+
+<div class="logo-icon">
+
+⚓
+
+</div>
+
+
+<div class="logo-name">
+
+Ship<span>EquipAR</span>
+
+</div>
+
 
 </div>
 
@@ -506,7 +520,7 @@ background:#0369a1;
 
 <a href="/admin">
 
-🏠 ADMIN DASHBOARD
+🏠 Admin Dashboard
 
 </a>
 
@@ -515,7 +529,7 @@ background:#0369a1;
 
 <a href="/admin/users">
 
-👥 MANAGE USERS
+👥 Manage Users
 </a>
 
 
@@ -524,7 +538,7 @@ background:#0369a1;
 
 <a href="/admin/modules">
 
-📚 MANAGE MODULE
+📚 Manage Module
 
 </a>
 
@@ -534,7 +548,7 @@ background:#0369a1;
 
 <a href="/admin/notes">
 
-📘 MANAGE NOTES
+📘 Manage Notes
 
 </a>
 
@@ -544,7 +558,7 @@ background:#0369a1;
 
 <a href="/admin/equipment">
 
-🦺 MANAGE EQUIPMENT
+🦺 Manage Equipments
 
 </a>
 
@@ -554,7 +568,7 @@ background:#0369a1;
 
 <a href="{{ route('admin.ships.index') }}">
 
-🚢 MANAGE SHIP
+🚢 Manage Ships
 
 </a>
 
@@ -564,7 +578,7 @@ background:#0369a1;
 
 <a href="/admin/course">
 
-📝 MANAGE QUIZ
+📝 Manage Quiz
 
 </a>
 
@@ -574,7 +588,7 @@ background:#0369a1;
 
 <a href="#">
 
-🏆 MANAGE CERTIFICATE
+🏆 Manage Certificate
 
 </a>
 

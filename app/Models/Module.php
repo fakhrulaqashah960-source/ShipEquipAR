@@ -43,4 +43,11 @@ return $this->hasMany(Ship::class);
 
 }
 
+public function quizzes()
+{
+
+    return $this->hasMany(Quiz::class);
+
+}
+
 }

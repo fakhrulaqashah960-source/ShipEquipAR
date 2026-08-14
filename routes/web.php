@@ -14,8 +14,8 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\LessonController;
 
 use App\Http\Controllers\QuizController;
-
 use App\Http\Controllers\AdminQuizController;
+
 use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\AdminNoteController;
 use App\Http\Controllers\AdminDashboardController;
@@ -23,11 +23,13 @@ use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\NoteController;
 
 
+
 /*
 |--------------------------------------------------------------------------
-| PUBLIC LANDING PAGE
+| PUBLIC
 |--------------------------------------------------------------------------
 */
+
 
 Route::get('/', function () {
 
@@ -35,20 +37,27 @@ Route::get('/', function () {
 
 });
 
+
+
 /*
 |--------------------------------------------------------------------------
-| AUTH ROUTES
+| AUTH
 |--------------------------------------------------------------------------
 */
+
 
 require __DIR__.'/auth.php';
 
 
+
+
+
 /*
 |--------------------------------------------------------------------------
-| PROTECTED AR MODEL
+| AR MODEL
 |--------------------------------------------------------------------------
 */
+
 
 Route::middleware([
     'auth',
@@ -64,9 +73,7 @@ Route::middleware([
 
     if(!file_exists($path))
     {
-
         abort(404);
-
     }
 
 
@@ -75,6 +82,10 @@ Route::middleware([
 
 })
 ->name('ar.model');
+
+
+
+
 
 
 
@@ -96,28 +107,15 @@ Route::middleware([
 
     /*
     |--------------------------------------------------------------------------
-    | USER DASHBOARD
+    | DASHBOARD
     |--------------------------------------------------------------------------
     */
 
 
-    Route::get('/dashboard', function () {
+    Route::get('/dashboard', function(){
 
 
-        // Extra security check
-
-        if(!auth()->check())
-        {
-
-            return redirect()
-                ->route('login');
-
-        }
-
-        $modules = \App\Models\Module::
-                    with('equipments')
-                    ->get();
-
+        $modules = \App\Models\Module::with('equipments')->get();
 
 
         return view(
@@ -130,9 +128,14 @@ Route::middleware([
     ->name('dashboard');
 
 
+
+
+
+
+
     /*
     |--------------------------------------------------------------------------
-    | LEARNING MODULE
+    | MODULE
     |--------------------------------------------------------------------------
     */
 
@@ -142,6 +145,12 @@ Route::middleware([
         [ModuleController::class,'userShow']
     )
     ->name('learning.show');
+
+
+
+
+
+
 
     /*
     |--------------------------------------------------------------------------
@@ -155,6 +164,13 @@ Route::middleware([
         [EquipmentController::class,'userShow']
     )
     ->name('equipment.show');
+
+
+
+
+
+
+
 
     /*
     |--------------------------------------------------------------------------
@@ -170,12 +186,18 @@ Route::middleware([
     ->name('user.notes');
 
 
-
     Route::get(
         '/module-notes/{id}',
         [NoteController::class,'show']
     )
     ->name('user.notes.show');
+
+
+
+
+
+
+
 
     /*
     |--------------------------------------------------------------------------
@@ -183,11 +205,19 @@ Route::middleware([
     |--------------------------------------------------------------------------
     */
 
+
     Route::get(
         '/course/{id}',
         [CourseController::class,'userShow']
     )
     ->name('course.show');
+
+
+
+
+
+
+
 
     /*
     |--------------------------------------------------------------------------
@@ -202,9 +232,16 @@ Route::middleware([
     )
     ->name('lesson.show');
 
+
+
+
+
+
+
+
     /*
     |--------------------------------------------------------------------------
-    | QUIZ
+    | QUIZ USER
     |--------------------------------------------------------------------------
     */
 
@@ -214,22 +251,6 @@ Route::middleware([
         [QuizController::class,'index']
     )
     ->name('quiz.index');
-
-
-
-    Route::get(
-        '/course/enrol/{id}',
-        [QuizController::class,'enrol']
-    )
-    ->name('course.enrol');
-
-
-
-    Route::get(
-        '/course/{id}/quiz',
-        [QuizController::class,'courseQuiz']
-    )
-    ->name('course.quiz');
 
 
 
@@ -252,6 +273,13 @@ Route::middleware([
 });
 
 
+
+
+
+
+
+
+
 /*
 |--------------------------------------------------------------------------
 | ADMIN AREA
@@ -267,11 +295,36 @@ Route::middleware([
 ->prefix('admin')
 ->group(function () {
 
+
+
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | DASHBOARD
+    |--------------------------------------------------------------------------
+    */
+
+
     Route::get(
-    '/',
-    [AdminDashboardController::class,'index']
-)
-->name('admin.dashboard');
+        '/',
+        [AdminDashboardController::class,'index']
+    )
+    ->name('admin.dashboard');
+
+
+
+
+
+
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | USERS
+    |--------------------------------------------------------------------------
+    */
+
 
     Route::resource(
         'users',
@@ -287,10 +340,26 @@ Route::middleware([
     ])
     ->names('admin.users');
 
+
+
+
+
+
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | MODULE
+    |--------------------------------------------------------------------------
+    */
+
+
     Route::resource(
         'modules',
         ModuleController::class
     );
+
+
 
     Route::get(
         'modules/{id}/equipment',
@@ -298,17 +367,59 @@ Route::middleware([
     )
     ->name('admin.module.equipment');
 
+
+
+
+
+
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | EQUIPMENT
+    |--------------------------------------------------------------------------
+    */
+
+
     Route::resource(
         'equipment',
         EquipmentController::class
     )
     ->names('admin.equipment');
 
+
+
+
+
+
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | SHIP
+    |--------------------------------------------------------------------------
+    */
+
+
     Route::resource(
-    'ships',
-    ShipController::class
-)
-->names('admin.ships');
+        'ships',
+        ShipController::class
+    )
+    ->names('admin.ships');
+
+
+
+
+
+
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | NOTES
+    |--------------------------------------------------------------------------
+    */
+
 
     Route::resource(
         'notes',
@@ -316,22 +427,39 @@ Route::middleware([
     )
     ->names('admin.notes');
 
+
+
+
+
+
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | QUIZ MANAGEMENT
+    |--------------------------------------------------------------------------
+    */
+
+
     Route::resource(
         'quiz',
         AdminQuizController::class
-    );
-
-    Route::get(
-        'quiz/{quiz}/question/create',
-        [AdminQuizController::class,'addQuestion']
     )
-    ->whereNumber('quiz');
+    ->names('admin.quiz');
 
-    Route::post(
-        'quiz/{quiz}/question/store',
-        [AdminQuizController::class,'storeQuestion']
-    )
-    ->whereNumber('quiz');
+
+
+
+
+
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | COURSE
+    |--------------------------------------------------------------------------
+    */
+
 
     Route::resource(
         'course',
@@ -339,6 +467,17 @@ Route::middleware([
     );
 
 
+
+
+
+
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | LESSON
+    |--------------------------------------------------------------------------
+    */
 
 
     Route::resource(
@@ -349,6 +488,12 @@ Route::middleware([
 
 
 });
+
+
+
+
+
+
 
 
 
@@ -364,6 +509,7 @@ Route::middleware([
     'prevent.back'
 ])
 ->group(function () {
+
 
 
     Route::get(
@@ -387,6 +533,7 @@ Route::middleware([
         [ProfileController::class,'destroy']
     )
     ->name('profile.destroy');
+
 
 
 });

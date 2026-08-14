@@ -761,16 +761,16 @@ class="equipment-card">
 </a>
 
 
-<a href="{{route('quiz.index')}}">
+<a href="{{ route('quiz.index') }}">
 
-📝 Quiz
+📝 Start Quiz
 
 </a>
 
 
 <a href="#">
 
-🏆 Certificate
+🏆 Get Certificate
 
 </a>
 
@@ -780,7 +780,7 @@ class="equipment-card">
 
 <a href="#">
 
-🤖 AI Chatbot
+🤖 Ship Bot
 
 </a>
 
